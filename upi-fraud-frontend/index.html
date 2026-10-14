@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111c2f" />
+  <title>Sentinel — UPI Fraud Intelligence</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview" aria-label="Sentinel home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-copy"><strong>sentinel<span>.</span></strong><small>PAYMENT INTELLIGENCE</small></span>
+      </a>
+
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="overview"><span class="nav-icon">⌂</span><span>Overview</span></button>
+        <button class="nav-item" data-page="checker"><span class="nav-icon">⌕</span><span>Payment checker</span><span class="nav-pill">AI</span></button>
+        <button class="nav-item" data-page="alerts"><span class="nav-icon">⚑</span><span>Fraud alerts</span><span class="nav-count" id="nav-alert-count">08</span></button>
+        <button class="nav-item" data-page="model"><span class="nav-icon">◈</span><span>Model insights</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="mini-shield">✓</div>
+        <div><strong>Demo environment</strong><p>No real payments are made.</p></div>
+        <span class="live-dot"></span>
+      </div>
+      <div class="sidebar-footer">CC6-AI02 <span>•</span> HACKATHON PROTOTYPE</div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark"><span></span><span></span><span></span></span><strong>sentinel<span>.</span></strong></div>
+        <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div>
+        <div class="topbar-actions">
+          <span class="environment-chip"><span class="live-dot"></span> DEMO MODE</span>
+          <button class="icon-button" id="help-button" aria-label="Show project information" title="About this prototype">i</button>
+          <div class="avatar" title="Demo analyst">RK</div>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <div class="demo-banner" id="demo-banner"><span class="demo-banner-icon">!</span><span><strong>Prototype using simulated data.</strong> Scores and dashboard metrics are for demonstration only. This app does not connect to UPI or initiate payments.</span><button id="dismiss-banner" aria-label="Dismiss banner">×</button></div>
+
+        <!-- OVERVIEW PAGE -->
+        <section class="page active" id="page-overview" data-page-panel="overview">
+          <div class="page-heading heading-with-action">
+            <div><div class="eyebrow"><span class="eyebrow-line"></span> FRAUD OPERATIONS</div><h1>Fraud intelligence <span class="heading-dot">.</span></h1><p class="page-subtitle">A clearer view of payment risk, suspicious patterns and emerging threats.</p></div>
+            <button class="button button-primary" data-go-page="checker"><span>＋</span> Check a payment <span class="button-arrow">↗</span></button>
+          </div>
+
+          <div class="metrics-grid">
+            <article class="metric-card">
+              <div class="metric-top"><span class="metric-label">Transactions analysed</span><span class="metric-icon icon-blue">↗</span></div>
+              <div class="metric-number" id="metric-total">1,284</div><div class="metric-foot"><span class="metric-neutral">◎</span> Simulated activity <span class="metric-muted">· sample data</span></div>
+              <div class="metric-spark spark-blue"><i style="height:30%"></i><i style="height:45%"></i><i style="height:35%"></i><i style="height:62%"></i><i style="height:50%"></i><i style="height:78%"></i><i style="height:68%"></i><i style="height:100%"></i></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top"><span class="metric-label">Flagged for review</span><span class="metric-icon icon-orange">⚑</span></div>
+              <div class="metric-number" id="metric-flagged">96</div><div class="metric-foot"><span class="metric-orange-dot"></span><span id="metric-flagged-rate">7.5%</span> <span class="metric-muted">of sample transactions</span></div>
+              <div class="metric-spark spark-orange"><i style="height:24%"></i><i style="height:42%"></i><i style="height:34%"></i><i style="height:70%"></i><i style="height:51%"></i><i style="height:64%"></i><i style="height:81%"></i><i style="height:100%"></i></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top"><span class="metric-label">Potential loss flagged</span><span class="metric-icon icon-green">₹</span></div>
+              <div class="metric-number" id="metric-loss">₹8.42L</div><div class="metric-foot"><span class="metric-green-dot"></span> At-risk amount <span class="metric-muted">· illustrative</span></div>
+              <div class="metric-spark spark-green"><i style="height:60%"></i><i style="height:39%"></i><i style="height:54%"></i><i style="height:43%"></i><i style="height:70%"></i><i style="height:58%"></i><i style="height:88%"></i><i style="height:100%"></i></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top"><span class="metric-label">Model precision</span><span class="metric-icon icon-purple">◎</span></div>
+              <div class="metric-number">94.2<span class="metric-unit">%</span></div><div class="metric-foot"><span class="metric-muted">Example metric only</span><span class="info-dot" title="Replace with measured test-set results">i</span></div>
+              <div class="precision-track"><span style="width:94.2%"></span></div>
+            </article>
+          </div>
+
+          <div class="content-grid overview-grid">
+            <article class="panel trend-panel">
+              <div class="panel-heading"><div><h2>Risk activity</h2><p>Flagged transactions across the last 7 days</p></div><div class="legend"><span><i class="legend-dot dot-lime"></i> Flagged</span><span><i class="legend-dot dot-slate"></i> Reviewed</span></div></div>
+              <div class="chart-wrap">
+                <div class="y-labels"><span>40</span><span>30</span><span>20</span><span>10</span><span>0</span></div>
+                <div class="line-chart" role="img" aria-label="Illustrative line chart showing flagged transaction trend over seven days">
+                  <div class="chart-gridlines"><i></i><i></i><i></i><i></i><i></i></div>
+                  <svg viewBox="0 0 700 205" preserveAspectRatio="none" aria-hidden="true">
+                    <defs><linearGradient id="areaLime" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#b9ed71" stop-opacity=".28"/><stop offset="100%" stop-color="#b9ed71" stop-opacity="0"/></linearGradient></defs>
+                    <path d="M0,150 C40,144 53,124 100,136 S165,94 200,112 S270,126 300,86 S365,106 400,79 S465,88 500,52 S565,81 600,47 S660,60 700,24 L700,205 L0,205 Z" fill="url(#areaLime)"/>
+                    <path d="M0,150 C40,144 53,124 100,136 S165,94 200,112 S270,126 300,86 S365,106 400,79 S465,88 500,52 S565,81 600,47 S660,60 700,24" fill="none" stroke="#78b83c" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+                    <path d="M0,175 C50,162 55,177 100,164 S165,155 200,170 S265,149 300,159 S365,138 400,151 S465,126 500,145 S565,125 600,136 S660,111 700,120" fill="none" stroke="#a9b3c2" stroke-width="2" stroke-dasharray="5 6" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+                    <circle cx="500" cy="52" r="5" fill="#ffffff" stroke="#78b83c" stroke-width="3" vector-effect="non-scaling-stroke"/>
+                    <circle cx="700" cy="24" r="5" fill="#ffffff" stroke="#78b83c" stroke-width="3" vector-effect="non-scaling-stroke"/>
+                  </svg>
+                  <div class="x-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+                </div>
+              </div>
+              <div class="chart-footnote"><span class="footnote-dot"></span> Sample trend for UI preview <span class="chart-foot-right">Updated just now · simulated</span></div>
+            </article>
+
+            <article class="panel category-panel">
+              <div class="panel-heading"><div><h2>Fraud categories</h2><p>Breakdown of sample alerts</p></div><button class="more-button" data-go-page="alerts" aria-label="View all alerts">•••</button></div>
+              <div class="category-list">
+                <div class="category-row"><div class="category-meta"><span class="category-symbol cat-refund">↩</span><span>Fake refund / collect</span><strong>34</strong></div><div class="bar-track"><span style="width:76%;background:#e7a44f"></span></div></div>
+                <div class="category-row"><div class="category-meta"><span class="category-symbol cat-qr">▦</span><span>QR recipient mismatch</span><strong>26</strong></div><div class="bar-track"><span style="width:58%;background:#8d83f6"></span></div></div>
+                <div class="category-row"><div class="category-meta"><span class="category-symbol cat-remote">⌘</span><span>Remote-access risk</span><strong>21</strong></div><div class="bar-track"><span style="width:47%;background:#52b6a7"></span></div></div>
+                <div class="category-row"><div class="category-meta"><span class="category-symbol cat-mule">⇄</span><span>Mule-account pattern</span><strong>15</strong></div><div class="bar-track"><span style="width:34%;background:#6c9ce8"></span></div></div>
+              </div>
+              <div class="category-footer"><span class="small-status-dot"></span> 4 patterns being monitored</div>
+            </article>
+          </div>
+
+          <div class="section-heading"><div><h2>Try a threat scenario</h2><p>Load a sample case to see how the detection flow behaves.</p></div><button class="text-button" data-go-page="checker">Open payment checker <span>→</span></button></div>
+          <div class="scenario-grid">
+            <button class="scenario-card" data-scenario="refund"><span class="scenario-icon refund-icon">↩</span><span class="scenario-copy"><strong>Fake refund request</strong><small>Collect request · debit conflict</small><span class="scenario-tag tag-high">HIGH RISK</span></span><span class="scenario-open">↗</span></button>
+            <button class="scenario-card" data-scenario="qr"><span class="scenario-icon qr-icon">▦</span><span class="scenario-copy"><strong>QR code swap</strong><small>Recipient does not match</small><span class="scenario-tag tag-high">HIGH RISK</span></span><span class="scenario-open">↗</span></button>
+            <button class="scenario-card" data-scenario="remote"><span class="scenario-icon remote-icon">⌘</span><span class="scenario-copy"><strong>Remote-access scam</strong><small>New device + unusual payee</small><span class="scenario-tag tag-review">REVIEW</span></span><span class="scenario-open">↗</span></button>
+            <button class="scenario-card" data-scenario="legitimate"><span class="scenario-icon safe-icon">✓</span><span class="scenario-copy"><strong>Normal payment</strong><small>Known payee · familiar amount</small><span class="scenario-tag tag-low">LOW RISK</span></span><span class="scenario-open">↗</span></button>
+          </div>
+
+          <div class="section-heading alert-heading"><div><h2>Recent signals</h2><p>Latest events from the simulated monitoring feed.</p></div><button class="text-button" data-go-page="alerts">View all alerts <span>→</span></button></div>
+          <article class="panel table-panel">
+            <div class="table-scroll"><table><thead><tr><th>TRANSACTION</th><th>SCENARIO</th><th>AMOUNT</th><th>RISK SCORE</th><th>STATUS</th><th></th></tr></thead><tbody id="overview-alert-rows"></tbody></table></div>
+          </article>
+          <p class="page-footnote">Sentinel is a student hackathon prototype. All transactions, identities and model metrics shown here are simulated.</p>
+        </section>
+
+        <!-- PAYMENT CHECKER PAGE -->
+        <section class="page" id="page-checker" data-page-panel="checker">
+          <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> PRE-PAYMENT SAFETY</div><h1>Check a payment <span class="heading-dot">.</span></h1><p class="page-subtitle">Run a simulated transaction through the fraud rules and risk scorer.</p></div></div>
+          <div class="notice notice-blue"><span class="notice-symbol">ⓘ</span><div><strong>Safe simulation only</strong><p>No real UPI account is connected. Use the sample scenarios or enter fictional transaction details.</p></div></div>
+
+          <div class="checker-layout">
+            <article class="panel form-panel">
+              <div class="panel-heading form-title"><div><h2>Transaction details</h2><p>Fields marked with * are required.</p></div><span class="step-label">STEP 01 / 02</span></div>
+              <div class="preset-block"><label for="scenario-select">Start with a sample scenario</label><div class="preset-row"><select id="scenario-select"><option value="custom">Custom transaction</option><option value="refund">Fake refund / collect request</option><option value="qr">QR recipient mismatch</option><option value="remote">Remote-access app scam</option><option value="mule">Mule-account chain</option><option value="legitimate">Legitimate payment</option></select><button class="button button-secondary button-small" id="load-scenario">Load example</button></div></div>
+              <form id="payment-form">
+                <div class="form-section-label"><span>01</span> PAYMENT INFORMATION</div>
+                <div class="form-grid">
+                  <div class="field"><label for="amount">Transaction amount (₹) *</label><div class="input-prefix"><span>₹</span><input type="number" id="amount" name="amount" min="1" max="100000000" value="450" required /></div><small class="field-help">Enter a fictional amount.</small></div>
+                  <div class="field"><label for="payment-type">Payment method *</label><select id="payment-type" name="payment-type"><option value="direct" selected>Direct UPI transfer</option><option value="collect">UPI collect request</option><option value="qr">QR code payment</option></select></div>
+                  <div class="field"><label for="payee">Actual payee / UPI ID *</label><input type="text" id="payee" value="known-cafe@upi" placeholder="merchant@upi" required /><small class="field-help">Who receives the money?</small></div>
+                  <div class="field"><label for="average-amount">User's typical payment (₹)</label><div class="input-prefix"><span>₹</span><input type="number" id="average-amount" min="0" value="600" /></div></div>
+                </div>
+
+                <div class="form-section-label"><span>02</span> PAYMENT CONTEXT</div>
+                <div class="field"><label for="message-context">Message or payment reason</label><textarea id="message-context" rows="3" placeholder="e.g. Approve this request to receive your refund">Payment for coffee and snacks at my usual cafe.</textarea><small class="field-help">Describe the message that led to this payment. Do not paste private information.</small></div>
+                <div class="form-grid context-grid">
+                  <div class="field"><label for="intended-direction">What does the user expect? *</label><select id="intended-direction"><option value="receive">Receive money / refund</option><option value="send" selected>Send money / make payment</option></select></div>
+                  <div class="field"><label for="actual-direction">What will the transaction do? *</label><select id="actual-direction"><option value="debit">Debit: money goes out</option><option value="credit">Credit: money comes in</option></select></div>
+                  <div class="field"><label for="expected-payee">Intended merchant / recipient</label><input type="text" id="expected-payee" value="known-cafe@upi" placeholder="trustedshop@upi" /><small class="field-help">Used for QR mismatch checks.</small></div>
+                  <div class="field"><label for="velocity">Transactions in last 10 minutes</label><input type="number" id="velocity" min="0" max="1000" value="1" /></div>
+                </div>
+
+                <div class="form-section-label"><span>03</span> RISK SIGNALS</div>
+                <div class="signal-options">
+                  <label class="toggle-row"><span class="toggle-copy"><strong>New payee</strong><small>First payment to this recipient</small></span><input type="checkbox" id="new-payee" /><span class="toggle-ui"></span></label>
+                  <label class="toggle-row"><span class="toggle-copy"><strong>Refund claim in message</strong><small>The user was told they would receive a refund</small></span><input type="checkbox" id="refund-claim" /><span class="toggle-ui"></span></label>
+                  <label class="toggle-row"><span class="toggle-copy"><strong>Remote-access signal</strong><small>Simulated screen-sharing / remote-control warning</small></span><input type="checkbox" id="remote-access" /><span class="toggle-ui"></span></label>
+                  <label class="toggle-row"><span class="toggle-copy"><strong>New or unfamiliar device</strong><small>Device is not recognised in this demo</small></span><input type="checkbox" id="new-device" /><span class="toggle-ui"></span></label>
+                  <label class="toggle-row"><span class="toggle-copy"><strong>Recipient linked to rapid transfers</strong><small>Simulated mule-account pattern signal</small></span><input type="checkbox" id="mule-signal" /><span class="toggle-ui"></span></label>
+                </div>
+                <div class="form-actions"><button type="reset" class="button button-ghost" id="reset-form">Reset form</button><button type="submit" class="button button-primary"><span>⌕</span> Analyse transaction <span class="button-arrow">→</span></button></div>
+              </form>
+            </article>
+
+            <aside class="result-column">
+              <article class="panel result-panel" id="result-panel">
+                <div class="panel-heading"><div><h2>Risk assessment</h2><p id="result-subtitle">Your result will appear here.</p></div><span class="shield-outline">⌑</span></div>
+                <div class="empty-result" id="empty-result"><div class="empty-shield">✓</div><strong>Ready to analyse</strong><p>Submit the transaction details to see a risk score, matching signals and an understandable explanation.</p><div class="empty-result-steps"><span>01 <i>Enter details</i></span><span>02 <i>Run risk check</i></span><span>03 <i>Review warning</i></span></div></div>
+                <div class="result-content hidden" id="result-content">
+                  <div class="risk-gauge-wrap"><div class="risk-gauge" id="risk-gauge" style="--score:0"><div class="gauge-inner"><span id="risk-score">0</span><small>RISK SCORE</small></div></div><div class="risk-summary"><span class="risk-level-badge" id="risk-badge">LOW RISK</span><h3 id="risk-title">Payment looks low risk</h3><p id="risk-summary-text">No major demo signals were found.</p></div></div>
+                  <div class="decision-callout" id="decision-callout"><span class="decision-icon">!</span><div><strong id="decision-title">Review before you pay</strong><p id="decision-copy">Always verify the payee before approving a request.</p></div></div>
+                  <div class="explanation-block"><div class="explanation-heading"><h3>Why this was flagged</h3><span id="reason-count">0 signals</span></div><ul id="reason-list" class="reason-list"></ul></div>
+                  <div class="detail-mini-grid"><div><span>PAYMENT AMOUNT</span><strong id="result-amount">₹0</strong></div><div><span>ACTUAL DIRECTION</span><strong id="result-direction">Debit · money out</strong></div><div><span>DETECTION TYPE</span><strong id="result-category">—</strong></div><div><span>ENGINE</span><strong>Rules + demo score</strong></div></div>
+                  <div class="result-actions"><button class="button button-secondary" id="review-button">Review details</button><button class="button button-danger" id="cancel-button">Cancel simulation</button><button class="button button-ghost hidden" id="continue-button">Continue demo</button></div>
+                  <p class="result-disclaimer">This risk score is generated by illustrative frontend rules, not a trained production model.</p>
+                </div>
+              </article>
+              <article class="panel checklist-panel"><div class="panel-heading"><div><h2>Before approving a payment</h2><p>Safety reminders for your demo</p></div></div><div class="checklist-item"><span class="check-icon">✓</span><span>Verify the recipient name and UPI ID.</span></div><div class="checklist-item"><span class="check-icon">✓</span><span>Remember: a UPI PIN authorises a payment; it is not needed to receive money.</span></div><div class="checklist-item"><span class="check-icon">✓</span><span>Never share PINs or OTPs with anyone.</span></div></article>
+            </aside>
+          </div>
+        </section>
+
+        <!-- ALERTS PAGE -->
+        <section class="page" id="page-alerts" data-page-panel="alerts">
+          <div class="page-heading heading-with-action"><div><div class="eyebrow"><span class="eyebrow-line"></span> CASE MANAGEMENT</div><h1>Fraud alerts <span class="heading-dot">.</span></h1><p class="page-subtitle">Review suspicious demo transactions and understand why they were flagged.</p></div><button class="button button-primary" data-go-page="checker">＋ Run a new check</button></div>
+          <div class="metrics-grid compact-metrics"><article class="metric-card"><div class="metric-top"><span class="metric-label">Total alerts</span><span class="metric-icon icon-orange">⚑</span></div><div class="metric-number" id="alerts-total">8</div><div class="metric-foot"><span class="metric-muted">Seeded demo records + this session</span></div></article><article class="metric-card"><div class="metric-top"><span class="metric-label">High risk</span><span class="metric-icon icon-red">!</span></div><div class="metric-number" id="alerts-high">5</div><div class="metric-foot"><span class="metric-muted">Needs priority review</span></div></article><article class="metric-card"><div class="metric-top"><span class="metric-label">Under review</span><span class="metric-icon icon-purple">◷</span></div><div class="metric-number" id="alerts-review">2</div><div class="metric-foot"><span class="metric-muted">Awaiting analyst outcome</span></div></article><article class="metric-card"><div class="metric-top"><span class="metric-label">Marked legitimate</span><span class="metric-icon icon-green">✓</span></div><div class="metric-number" id="alerts-legitimate">1</div><div class="metric-foot"><span class="metric-muted">Feedback in this sample</span></div></article></div>
+          <article class="panel alert-list-panel"><div class="panel-heading alert-tools-heading"><div><h2>Alert queue</h2><p>Search, filter and inspect the demo records.</p></div><button id="export-csv" class="button button-secondary button-small">↓ Export CSV</button></div>
+            <div class="table-tools"><div class="search-box"><span>⌕</span><input id="alert-search" type="search" placeholder="Search payee, category or ID..." aria-label="Search alerts" /></div><select id="risk-filter" aria-label="Filter by risk"><option value="all">All risk levels</option><option value="HIGH">High risk</option><option value="MEDIUM">Medium risk</option><option value="LOW">Low risk</option></select><select id="category-filter" aria-label="Filter by category"><option value="all">All categories</option><option value="FAKE_REFUND_COLLECT">Fake refund / collect</option><option value="QR_MISMATCH">QR recipient mismatch</option><option value="REMOTE_ACCESS">Remote-access risk</option><option value="MULE_PATTERN">Mule-account pattern</option><option value="UNUSUAL_ACTIVITY">Unusual activity</option></select></div>
+            <div class="table-scroll"><table class="full-table"><thead><tr><th>TRANSACTION ID</th><th>PAYEE</th><th>DETECTION CATEGORY</th><th>AMOUNT</th><th>RISK</th><th>ANALYST STATUS</th><th>ACTION</th></tr></thead><tbody id="alerts-table-body"></tbody></table></div><div id="no-alerts" class="no-results hidden">No alerts match these filters. Try changing your search or risk level.</div><div class="table-bottom"><span id="table-result-count">Showing 8 records</span><span>Demo records are fictional</span></div>
+          </article>
+        </section>
+
+        <!-- MODEL INSIGHTS PAGE -->
+        <section class="page" id="page-model" data-page-panel="model">
+          <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> MODEL TRANSPARENCY</div><h1>Model insights <span class="heading-dot">.</span></h1><p class="page-subtitle">Understand what the demo detector checks—and what must be measured before deployment.</p></div></div>
+          <div class="notice notice-amber"><span class="notice-symbol">!</span><div><strong>Illustrative evaluation, not benchmark results</strong><p>The numbers below are placeholders to demonstrate how model metrics can be presented. Replace them with results calculated on your labelled test set.</p></div></div>
+          <div class="model-metric-grid"><article class="panel model-metric"><span class="metric-label">Precision</span><div class="model-metric-number">94.2<span>%</span></div><div class="metric-track"><span style="width:94.2%;background:#7cae46"></span></div><p>Of alerts raised, how many were actually fraud?</p></article><article class="panel model-metric"><span class="metric-label">Recall</span><div class="model-metric-number">88.6<span>%</span></div><div class="metric-track"><span style="width:88.6%;background:#6b9fe8"></span></div><p>Of all fraudulent cases, how many were caught?</p></article><article class="panel model-metric"><span class="metric-label">False-positive rate</span><div class="model-metric-number">3.1<span>%</span></div><div class="metric-track"><span style="width:3.1%;background:#dc9b52"></span></div><p>Of legitimate cases, how many were wrongly flagged?</p></article><article class="panel model-metric"><span class="metric-label">Avg. response time</span><div class="model-metric-number">42<span class="metric-ms">ms</span></div><div class="metric-track"><span style="width:42%;background:#9a8ae8"></span></div><p>Placeholder only—measure actual end-to-end latency.</p></article></div>
+          <div class="content-grid model-grid"><article class="panel"><div class="panel-heading"><div><h2>Detection pipeline</h2><p>How a payment gets assessed</p></div></div><div class="pipeline"><div class="pipeline-step"><span class="pipeline-number">01</span><div><strong>Input validation</strong><p>Check required values and normalise fields.</p></div><span class="pipeline-state">READY</span></div><div class="pipeline-step"><span class="pipeline-number">02</span><div><strong>Context checks</strong><p>Compare refund wording, debit direction and payee identity.</p></div><span class="pipeline-state">READY</span></div><div class="pipeline-step"><span class="pipeline-number">03</span><div><strong>Risk scoring</strong><p>Combine rule signals and model prediction.</p></div><span class="pipeline-state pipeline-planned">DEMO RULES</span></div><div class="pipeline-step"><span class="pipeline-number">04</span><div><strong>Explanation + action</strong><p>Return a human-readable warning and reasons.</p></div><span class="pipeline-state">READY</span></div></div></article><article class="panel"><div class="panel-heading"><div><h2>Signals used</h2><p>Current demo feature coverage</p></div></div><div class="feature-list"><div class="feature-item"><span class="feature-check">✓</span><div><strong>Refund vs. debit conflict</strong><small>Payment-context rule</small></div><span class="feature-weight weight-high">HIGH</span></div><div class="feature-item"><span class="feature-check">✓</span><div><strong>QR recipient mismatch</strong><small>Recipient comparison</small></div><span class="feature-weight weight-high">HIGH</span></div><div class="feature-item"><span class="feature-check">✓</span><div><strong>New payee and device</strong><small>Behavioural risk signals</small></div><span class="feature-weight weight-medium">MEDIUM</span></div><div class="feature-item"><span class="feature-check">✓</span><div><strong>Rapid transaction sequence</strong><small>Velocity / possible mule signal</small></div><span class="feature-weight weight-medium">MEDIUM</span></div><div class="feature-item planned-feature"><span class="feature-pending">＋</span><div><strong>Unseen-pattern detector</strong><small>Add and evaluate Isolation Forest</small></div><span class="feature-weight weight-planned">PLANNED</span></div></div></article></div>
+          <article class="panel confusion-panel"><div class="panel-heading"><div><h2>Confusion matrix template</h2><p>Replace example values after running evaluation on a labelled test set.</p></div><span class="sample-tag">EXAMPLE ONLY</span></div><div class="confusion-layout"><div class="matrix-axis-label">ACTUAL CLASS</div><div class="confusion-matrix"><div class="matrix-corner"></div><div class="matrix-col-label">Predicted fraud</div><div class="matrix-col-label">Predicted legitimate</div><div class="matrix-row-label">Actual fraud</div><div class="matrix-cell cell-tp"><strong>TP</strong><span>True positive</span></div><div class="matrix-cell cell-fn"><strong>FN</strong><span>Missed fraud</span></div><div class="matrix-row-label">Actual legitimate</div><div class="matrix-cell cell-fp"><strong>FP</strong><span>False alarm</span></div><div class="matrix-cell cell-tn"><strong>TN</strong><span>True negative</span></div></div></div><div class="matrix-note"><span class="info-dot">i</span> A strong submission reports all four counts, the formulas used, the test-set size and the dataset-generation method.</div></article>
+        </section>
+      </div>
+      <footer class="app-footer"><span>◈ SENTINEL PAYMENT INTELLIGENCE</span><span>Built for CC6-AI02 <i></i> Frontend-only prototype</span></footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-mark">✓</span><span id="toast-message">Done</span></div>
+  <div class="modal-backdrop hidden" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-card"><button class="modal-close" id="close-modal" aria-label="Close dialog">×</button><div class="modal-mark">◈</div><h2 id="modal-title">About this prototype</h2><p>Sentinel is a frontend demonstration for the CC6-AI02 payment-fraud hackathon challenge. It uses fictional data and transparent JavaScript rules to demonstrate the user journey.</p><div class="modal-list"><span>✓ Payment simulator and scenario presets</span><span>✓ Rule-based risk score with readable reasons</span><span>✓ Searchable alert queue and CSV export</span><span>○ No live UPI, bank API or trained ML model is connected</span></div><button class="button button-primary modal-done" id="modal-done">Got it</button></div></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
