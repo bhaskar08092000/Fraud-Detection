@@ -2,6 +2,7 @@
 # Sentinel — UPI Fraud Intelligence Frontend
 
 A beginner-friendly, responsive frontend prototype for the CC6-AI02 hackathon problem, built using **HTML, CSS and plain JavaScript**. No React, package install, build tool or paid library is required.
+![ui](1.PNG)
 
 ## Run it
 
